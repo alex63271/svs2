@@ -20,7 +20,7 @@ namespace probaSVS
         {
 
             using (FileStream fstream = File.OpenRead("C:/Users/novoseltsev.aleksey/Desktop/674dfaf3-e9a1-4f52-833a-fe36101b43b3/674dfaf3-e9a1-4f52-833a-fe36101b43b3.xml"))
-            { // преобразуем строку в байты
+            { // преобразуем документ в байты
                 byte[] document = new byte[fstream.Length];
                 // считываем данные
                 fstream.Read(document, 0, document.Length);
@@ -69,15 +69,7 @@ namespace probaSVS
  
             Console.WriteLine("Ожидаем ответ от сервера....");
 
-            //Task<svs.VerificationResult> taska = new Task<svs.VerificationResult>(async () => {
-            //    svs.VerificationServiceClient zapros = new svs.VerificationServiceClient(svs.VerificationServiceClient.EndpointConfiguration.BasicHttpBinding_IVerificationService);
-
-            //    Dictionary<svs.VerifyParams, string> vp = new Dictionary<svs.VerifyParams, string>();
-            //    vp.Add(svs.VerifyParams.SignatureIndex, "1");                                           //создание словаря для отправки              
-            //    return await zapros.VerifyDetachedSignatureAsync(svs.SignatureType.CAdES, document, signature, vp); //выполнение запроса(тип подписи, документ, подпись, словарь)
-
-
-            //});
+        
 
 
             svs.VerificationResult otvetSVS = QuerySVS(document, signature).Result; //создаем объект класса svs.VerificationResult, вызываем метод запроса к серверу и записываем в объект ответ от сервиса
@@ -163,23 +155,7 @@ namespace probaSVS
                 Console.ForegroundColor = color;
             }
 
-            //s = "STREET=";
-            //if (otvet.IndexOf(s) != -1)
-            //{
-            //    int startindex = otvet.IndexOf(s) + s.Length;
-            //    int lenght = otvet.IndexOf(kav, startindex + 1) - (otvet.IndexOf(s) + s.Length);
-            //    string STREET = otvet.Substring(startindex + 1, lenght - 1);
-            //    Console.WriteLine($"Адрес - {STREET}");
-            //}
-            //else
-            //{
-
-            //    Console.WriteLine("Поле STREET отсутствует в сертификате");
-            //}
-
-            //s = " T=";
-            //string T = otvet.Substring(otvet.IndexOf(s) + s.Length, otvet.IndexOf(zap, otvet.IndexOf(s)) - (otvet.IndexOf(s) + s.Length));
-            //Console.WriteLine($"Должность - {T}");
+           
 
 
 
